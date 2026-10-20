@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light"><head><meta charset="utf-8">
+<html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Loopie – Direct File Sharing</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -82,10 +82,10 @@ textarea,.in{width:100%;border:1.5px solid transparent;background:var(--glass2);
 .ob{position:fixed;inset:0;z-index:70;background:var(--bgc);display:none;justify-content:center;overflow:hidden;transition:transform .8s cubic-bezier(.7,0,.2,1),opacity .8s}.ob.s{display:flex}.ob.out{transform:translateY(-100%);opacity:.4}
 .ob .in2w{position:relative;width:100%;max-width:480px;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 22px calc(30px + env(safe-area-inset-bottom,0px));z-index:2}
 .fc{position:absolute;padding:14px 16px;animation:float 5s ease-in-out infinite;margin:0}.fc.a{left:8%;top:11%;width:200px}.fc.b{left:30%;top:31%;width:210px;animation-delay:-2s}.fc small{display:block;font-size:10.5px;color:var(--mut)}.fc b.serif{font-size:17px}
-.fc .bars{margin-top:10px;display:grid;gap:8px}.fc .bars div{font-size:9.5px;color:var(--mut)}.fc .bars span{display:flex;justify-content:space-between;margin-bottom:3px}.fc .bars i{display:block;height:4px;border-radius:4px;background:var(--line)}.fc .bars u{display:block;height:100%;border-radius:4px;background:var(--or);width:0}@keyframes fillw{to{width:var(--w)}}
+.fc .bars{margin-top:10px;display:grid;gap:8px}.fc .bars div{font-size:9.5px;color:var(--mut)}.fc .bars span{display:flex;justify-content:space-between;margin-bottom:3px}.fc .bars i{display:block;height:4px;border-radius:4px;background:var(--line)}.fc .bars u{display:block;height:100%;border-radius:4px;background:var(--or);width:0;animation:fillw 1.6s .8s cubic-bezier(.2,.8,.2,1) forwards}@keyframes fillw{to{width:var(--w)}}
 .fp{position:absolute;right:12%;top:24%;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;color:#4f8ff0;background:var(--glass2);box-shadow:var(--sh);animation:float 4s ease-in-out infinite;animation-delay:-1s}
 .ob h2{font-size:46px;line-height:1.05;text-align:center;letter-spacing:-1px}.ob h2 .l{color:var(--mut);display:block}.ob p{font-size:13px;color:var(--mut);text-align:center;line-height:1.55;margin:16px 10px 20px}
-.dots{display:flex;gap:6px;margin-bottom:20px}.dots i{width:6px;height:6px;border-radius:6px;background:var(--btn);opacity:.2;transition:width .4s cubic-bezier(.34,1.3,.5,1),opacity .4s}.dots i.a{width:22px;opacity:1}.ob .btn{width:100%;padding:18px;font-size:15px;border-radius:32px}
+.dots{display:flex;gap:6px;margin-bottom:20px}.dots i{width:22px;height:6px;border-radius:6px;background:var(--btn)}.dots i+i{width:6px;opacity:.2}.ob .btn{width:100%;padding:18px;font-size:15px;border-radius:32px}
 .splash{position:fixed;inset:0;background:var(--bgc);z-index:100;pointer-events:none;display:grid;place-items:center;animation:sp .6s 2.3s forwards;overflow:hidden}.splash .bgfx{position:absolute}
 .splash .wm{position:relative;width:min(70vw,300px);color:var(--ink);overflow:visible}.splash .wm path,.splash .wm circle{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.2s cubic-bezier(.6,0,.2,1) forwards}.splash .wm path:nth-child(2){animation-delay:.15s}.splash .wm circle{animation-delay:.5s}.splash .wm path:nth-child(4){animation-delay:.7s}.splash .wm path:nth-child(5){animation-delay:.85s}
 .splash .wm .sp{opacity:0;transform-box:fill-box;transform-origin:center;animation:spk .6s 1.5s cubic-bezier(.34,1.8,.5,1) forwards}@keyframes draw{to{stroke-dashoffset:0}}@keyframes spk{from{transform:scale(0) rotate(-90deg)}to{opacity:1;transform:scale(1.15)}}@keyframes sp{to{opacity:0;visibility:hidden}}
@@ -94,25 +94,7 @@ textarea,.in{width:100%;border:1.5px solid transparent;background:var(--glass2);
 .wel{display:flex;align-items:center;gap:12px}.wav{display:none;width:50px;height:50px;font-size:19px;flex:none}
 .fd{width:86px;height:96px;flex:none;border:1px solid var(--stroke);border-radius:16px;background:var(--glass2);position:relative;display:grid;align-content:end;gap:1px;padding:10px;text-align:left;cursor:pointer;color:var(--ink);font:600 12px "Inter",sans-serif;transition:.25s;overflow:hidden}.fd:hover{transform:translateY(-3px)}.fd.a{box-shadow:0 0 0 2px var(--or)}
 .fd .fs{position:absolute;left:9px;right:9px;top:9px;height:38px;border-radius:7px 7px 2px 2px;background:linear-gradient(#fff,#e4e4e8);box-shadow:0 3px 8px rgba(0,0,0,.18)}.fd .fs:before{content:"";position:absolute;left:0;top:-5px;width:34px;height:7px;border-radius:5px 5px 0 0;background:#fff}.fd small{font-size:10.5px;color:var(--mut);font-weight:500}
-
-/* onboarding slides */
-.sh{position:absolute}.skip{position:absolute;right:20px;top:calc(20px + env(safe-area-inset-top,0px));z-index:5;display:flex;align-items:center;background:var(--glass2);color:var(--ink);border:1px solid var(--stroke);border-radius:20px;padding:8px 16px;font:500 12px "Inter",sans-serif;cursor:pointer;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
-.sph{left:30%;top:13%;width:210px;height:210px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#fff,#ffcfa8 45%,#f08a2e);box-shadow:inset -12px -16px 40px rgba(180,80,20,.35),0 30px 60px rgba(240,138,46,.3);animation:float 7s ease-in-out infinite}
-.sph2{left:26%;top:25%;width:64px;height:64px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#cfe0ff 50%,#4f8ff0);box-shadow:0 0 40px rgba(79,143,240,.4);animation:float 5s ease-in-out infinite;animation-delay:-1s}
-.tri{background:linear-gradient(135deg,#ffd2b5,#f08a2e);clip-path:polygon(0 0,100% 38%,32% 100%);animation:float 6s ease-in-out infinite}.t1{left:48%;top:12%;width:90px;height:90px}.t2{left:14%;top:31%;width:130px;height:130px;animation-delay:-2s;opacity:.9}.t3{right:12%;top:37%;width:56px;height:56px;animation-delay:-4s;opacity:.8}
-.cube{right:15%;top:30%;width:46px;height:46px;background:linear-gradient(135deg,#cdeadf,#4bb89a);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);animation:float 5.5s ease-in-out infinite;animation-delay:-3s}
-.vis{position:absolute;left:50%;top:0;transform:translateX(-50%);width:100%;max-width:480px;height:58%;z-index:1}
-.v{position:absolute;inset:0;opacity:0;transform:scale(.9);filter:blur(12px);transition:opacity .7s,transform .7s cubic-bezier(.2,.8,.2,1),filter .7s;pointer-events:none}.v.a{opacity:1;transform:none;filter:none}
-.orbw{position:absolute;inset:0;animation:spin 40s linear infinite}
-.rad{position:absolute;left:50%;top:50%;width:300px;height:300px;margin:-150px 0 0 -150px}
-.orbit{position:absolute;left:var(--in);right:var(--in);top:calc(var(--in) - 6px);bottom:calc(var(--in) + 6px);animation:spin var(--d) linear infinite;animation-delay:var(--dl,0s)}
-.orbit .av{position:absolute;left:calc(50% - 20px);top:-20px;width:40px;height:40px;font-size:15px;animation:spin var(--d) linear infinite reverse;animation-delay:var(--dl,0s)}
-.v.a .fc .bars u{animation:fillw 1.6s .5s cubic-bezier(.2,.8,.2,1) forwards}
-.shld{position:absolute;left:50%;top:50%;width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:36px;display:grid;place-items:center;background:linear-gradient(135deg,var(--or2),var(--or));color:#fff;box-shadow:0 24px 50px rgba(240,138,46,.45);animation:float 4s ease-in-out infinite}.shld .i{width:56px;height:56px}.shld:before{content:"";position:absolute;inset:-14px;border-radius:46px;border:2px solid var(--or);opacity:.5;animation:halo 2.4s ease-out infinite}
-.cb{position:absolute;padding:10px 16px;border-radius:20px;font-size:13px;font-weight:500;background:var(--glass2);color:var(--ink);border:1px solid var(--stroke);box-shadow:var(--sh);animation:float 5s ease-in-out infinite}.cb.c1{left:9%;top:16%}.cb.c2{right:8%;top:30%;animation-delay:-2s}.cb.c3{left:14%;bottom:12%;animation-delay:-3.5s}.cb.c4{right:12%;bottom:8%;animation-delay:-1s}
-.obt{text-align:center;width:100%;min-height:176px}.obt.in>*{animation:bi .8s cubic-bezier(.2,.8,.2,1) backwards}.obt.in p{animation-delay:.12s}
-
-/* dark theme (toggle) */
+.sh,.skip{display:none}
 html:root[data-theme=dark]{--bgc:#050506;--ink:#f5f5f7;--mut:#8c8c93;--glass:rgba(255,255,255,.045);--glass2:rgba(255,255,255,.08);--stroke:rgba(255,255,255,.09);--line:rgba(255,255,255,.08);--btn:linear-gradient(180deg,#f7f7f8,#a5a5aa);--btnt:#111;--tick:rgba(255,255,255,.16);--sh:0 20px 44px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.1)}
 html:root[data-theme=dark] .bgfx i{opacity:0}html:root[data-theme=dark] .bgfx:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% -5%,rgba(255,255,255,.09),transparent 55%)}
 html:root[data-theme=dark] .serif,html:root[data-theme=dark] .pst b,html:root[data-theme=dark] .gn,html:root[data-theme=dark] #myname{font-family:"Inter",system-ui,sans-serif!important;font-weight:600!important;letter-spacing:-.025em}
@@ -131,12 +113,11 @@ html:root[data-theme=dark] .tf .t>small:last-child{border:1px solid rgba(255,255
 html:root[data-theme=dark] .fd{background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border-color:rgba(255,255,255,.1)}
 html:root[data-theme=dark] .msg.me{background:#252528;color:#fff}html:root[data-theme=dark] .msg.th{background:transparent;border:0;padding-left:2px}html:root[data-theme=dark] .in{background:rgba(255,255,255,.07);border-radius:26px;border-color:rgba(255,255,255,.06)}
 html:root[data-theme=dark] .tg[aria-checked=true]{background:linear-gradient(180deg,#f7f7f8,#a5a5aa)}html:root[data-theme=dark] .tg[aria-checked=true]:after{background:#111}html:root[data-theme=dark] .menu{background:rgba(24,24,27,.94);border-color:rgba(255,255,255,.1)}html:root[data-theme=dark] .si{background:rgba(255,255,255,.06)}
-html:root[data-theme=dark] .ob .skip{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.14)}
-html:root[data-theme=dark] .sph{background:radial-gradient(circle at 35% 28%,#58585c,#1a1a1d 58%,#08080a);box-shadow:inset -12px -16px 40px rgba(0,0,0,.85)}
-html:root[data-theme=dark] .sph2{background:radial-gradient(circle at 35% 30%,#fff,#c4c4c8 42%,#5a5a5e);box-shadow:0 0 44px rgba(255,255,255,.4)}
-html:root[data-theme=dark] .tri{background:linear-gradient(135deg,#9a9a9f,#2b2b2e)}
-html:root[data-theme=dark] .cube{background:linear-gradient(135deg,#d8d8dc,#3a3a3e)}
-html:root[data-theme=dark] .shld{background:radial-gradient(circle at 32% 26%,#efe8ff 0%,#a68df2 34%,#5b3fc4 74%,#37238a 100%);box-shadow:0 20px 50px rgba(110,80,230,.6),inset 0 2px 4px rgba(255,255,255,.6),inset 0 -7px 12px rgba(30,10,90,.5)}html:root[data-theme=dark] .shld:before{border-color:#a68df2}
+html:root[data-theme=dark] .ob .sh{display:block;position:absolute}html:root[data-theme=dark] .ob .skip{display:block;position:absolute;right:20px;top:calc(20px + env(safe-area-inset-top,0px));z-index:5;background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:8px 16px;font:500 12px "Inter",sans-serif;cursor:pointer}html:root[data-theme=dark] .ob .fc,html:root[data-theme=dark] .ob .fp{display:none}
+html:root[data-theme=dark] .sph{left:30%;top:13%;width:210px;height:210px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#58585c,#1a1a1d 58%,#08080a);box-shadow:inset -12px -16px 40px rgba(0,0,0,.85);animation:float 7s ease-in-out infinite}
+html:root[data-theme=dark] .sph2{left:26%;top:25%;width:64px;height:64px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#c4c4c8 42%,#5a5a5e);box-shadow:0 0 44px rgba(255,255,255,.4);animation:float 5s ease-in-out infinite;animation-delay:-1s}
+html:root[data-theme=dark] .tri{background:linear-gradient(135deg,#9a9a9f,#2b2b2e);clip-path:polygon(0 0,100% 38%,32% 100%);animation:float 6s ease-in-out infinite}html:root[data-theme=dark] .t1{left:48%;top:12%;width:90px;height:90px;transform:rotate(18deg)}html:root[data-theme=dark] .t2{left:14%;top:31%;width:130px;height:130px;animation-delay:-2s;opacity:.9}html:root[data-theme=dark] .t3{right:12%;top:37%;width:56px;height:56px;animation-delay:-4s;opacity:.8}
+html:root[data-theme=dark] .cube{right:15%;top:30%;width:46px;height:46px;background:linear-gradient(135deg,#d8d8dc,#3a3a3e);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);animation:float 5.5s ease-in-out infinite;animation-delay:-3s}
 html:root[data-theme=dark] .dots i{background:#fff}html:root[data-theme=dark] .ob .btn{background:linear-gradient(180deg,#fbfbfb,#9c9ca1);color:#111}
 html:root[data-theme=dark] .splash,html:root[data-theme=dark] .ob{background:#050506}
 </style></head><body>
@@ -182,7 +163,6 @@ html:root[data-theme=dark] .splash,html:root[data-theme=dark] .ob{background:#05
    <button id="mInv"><svg class="i"><use href="#i-link"/></svg>Copy invite link</button>
    <button id="mAll"><svg class="i"><use href="#i-down"/></svg>Save all received</button>
    <button id="mClr"><svg class="i"><use href="#i-x"/></svg>Clear activity</button>
-   <button id="mTour"><svg class="i"><use href="#i-sparkle"/></svg>Replay intro</button>
   </div>
  </header>
  <div class="wel"><div class="av wav" id="wav"></div><div><small id="wsub">Welcome back</small><h1 class="serif" id="date">Today</h1></div></div>
@@ -257,22 +237,11 @@ html:root[data-theme=dark] .splash,html:root[data-theme=dark] .ob{background:#05
 <div class="ov" id="ov"><svg class="i"><use href="#i-down"/></svg>Drop on a friend to send just to them, or anywhere for everyone</div>
 <canvas id="cf"></canvas>
 <div class="ob" id="ob"><div class="bgfx"><i class="b1"></i><i class="b2"></i><i class="b3"></i><i class="b4"></i></div>
- <button class="skip" id="obSkip">Skip</button><button class="skip" id="obTheme" aria-label="Toggle dark mode" style="left:20px;right:auto;padding:8px 11px"><svg class="i"><use href="#i-moon"/></svg></button>
- <div class="vis" id="vis">
-  <div class="v"><div class="orbw"><div class="sh sph"></div><div class="sh sph2"></div><i class="sh tri t1"></i><i class="sh tri t2"></i><i class="sh tri t3"></i><i class="sh cube"></i></div></div>
-  <div class="v"><div class="rad"><div class="rings"><i></i><i></i><i></i></div><div class="sweep"></div><div class="you"><div class="av" style="background:linear-gradient(135deg,#ffb88a,#f08a5d)">L</div></div>
-   <div class="orbit" style="--in:85px;--d:12s"><div class="av" style="background:linear-gradient(135deg,#9ad8c0,#4bb89a)">A</div></div>
-   <div class="orbit" style="--in:85px;--d:12s;--dl:-6s"><div class="av" style="background:linear-gradient(135deg,#9cc7ff,#5a8ff0)">M</div></div>
-   <div class="orbit" style="--in:25px;--d:20s;--dl:-3s"><div class="av" style="background:linear-gradient(135deg,#f5a4c8,#d96aa7)">R</div></div>
-   <div class="orbit" style="--in:25px;--d:20s;--dl:-13s"><div class="av" style="background:linear-gradient(135deg,#c4b2f5,#8d72e0)">J</div></div></div></div>
-  <div class="v">
-   <div class="fc gl a"><b class="serif">Your Transfer Progress</b><small>Live sharing</small><div class="bars"><div><span><em style="font-style:normal">Photos</em><em style="font-style:normal">45%</em></span><i><u style="--w:45%"></u></i></div><div><span><em style="font-style:normal">Documents</em><em style="font-style:normal">80%</em></span><i><u style="--w:80%"></u></i></div></div></div>
-   <div class="fp"><svg class="i"><use href="#i-zap"/></svg></div>
-   <div class="fc gl b"><small>Drop no: 321</small><div style="display:flex;justify-content:space-between;align-items:center"><b class="serif">Holiday Photos</b><svg class="i" style="color:var(--or)"><use href="#i-bookmark"/></svg></div><div class="stk" style="margin-top:12px"><div class="av" style="background:linear-gradient(135deg,#ffb88a,#f08a5d)">R</div><div class="av" style="background:linear-gradient(135deg,#9ad8c0,#4bb89a)">A</div><div class="av" style="background:linear-gradient(135deg,#9cc7ff,#5a8ff0)">M</div><span class="lb" style="margin:5px 0 0 8px">+3</span></div></div>
-  </div>
-  <div class="v"><div class="shld"><svg class="i"><use href="#i-shield"/></svg></div><div class="cb c1">Got it ✓</div><div class="cb c2">Send it again?</div><div class="cb c3">Thanks!</div><div class="cb c4">Encrypted ✓</div></div>
- </div>
- <div class="in2w"><div class="obt" id="obT"></div><div class="dots" id="obD"><i></i><i></i><i></i><i></i></div><button class="btn" id="obGo">Next</button></div>
+ <div class="sh sph"></div><div class="sh sph2"></div><i class="sh tri t1"></i><i class="sh tri t2"></i><i class="sh tri t3"></i><i class="sh cube"></i><button class="skip" id="obSkip">Skip</button>
+ <div class="fc gl a"><b class="serif">Your Transfer Progress</b><small>Live sharing</small><div class="bars"><div><span><em style="font-style:normal">Photos</em><em style="font-style:normal">45%</em></span><i><u style="--w:45%"></u></i></div><div><span><em style="font-style:normal">Documents</em><em style="font-style:normal">80%</em></span><i><u style="--w:80%"></u></i></div></div></div>
+ <div class="fp"><svg class="i"><use href="#i-zap"/></svg></div>
+ <div class="fc gl b"><small>Drop no: 321</small><div style="display:flex;justify-content:space-between;align-items:center"><b class="serif">Holiday Photos</b><svg class="i" style="color:var(--or)"><use href="#i-bookmark"/></svg></div><div class="stk" style="margin-top:12px"><div class="av" style="background:linear-gradient(135deg,#ffb88a,#f08a5d)">R</div><div class="av" style="background:linear-gradient(135deg,#9ad8c0,#4bb89a)">A</div><div class="av" style="background:linear-gradient(135deg,#9cc7ff,#5a8ff0)">M</div><span class="lb" style="margin:5px 0 0 8px">+3</span></div></div>
+ <div class="in2w"><h2 class="serif"><span class="l">Share Smarter,</span>Every Single Day</h2><p>Send photos, videos and documents straight to friends nearby. No cloud, no waiting, no data used.</p><div class="dots"><i></i><i></i><i></i></div><button class="btn" id="obGo">Explore Now</button></div>
 </div>
 <div class="splash"><div class="bgfx"><i class="b1"></i><i class="b2"></i><i class="b3"></i><i class="b4"></i></div><svg class="wm" viewBox="0 0 262 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="11" stroke-linejoin="round"><path pathLength="1" d="M8 4V70"/><path pathLength="1" stroke-linecap="round" d="M72 49C62 33 34 31 31 49C34 67 62 65 72 49C82 33 110 31 113 49C110 67 82 65 72 49Z"/><path pathLength="1" d="M137 28V96"/><circle pathLength="1" cx="157" cy="49" r="20"/><path pathLength="1" d="M196 28V70"/><path pathLength="1" d="M214 49H254A20 20 0 1 0 248 63"/></g><path class="sp" d="M196 0L200 6L206 10L200 14L196 20L192 14L186 10L192 6Z"/></svg></div>
 <div class="toast" id="toast"><i></i><span id="tmsg"></span></div>
@@ -299,7 +268,7 @@ function sendPrompt(){if(!peers.length){toast('Tap a friend in the circle first'
 $('#fab').onclick=$('#cta').onclick=sendPrompt;
 $$('[data-copy]').forEach(b=>b.onclick=async()=>{const t=$('#'+b.dataset.copy);t.select();try{await navigator.clipboard.writeText(t.value)}catch(e){document.execCommand('copy')}toast('Copied. Go share it')});
 $$('.tg').forEach(t=>t.onclick=()=>{const v=t.getAttribute('aria-checked')!=='true';t.setAttribute('aria-checked',v);if(t.id==='tgAuto')S.auto=v;if(t.id==='tgSound')S.sound=v;if(t.id==='tgDark')document.documentElement.dataset.theme=v?'dark':'light'});
-document.documentElement.dataset.theme='light';
+{const dk=matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.dataset.theme=dk?'dark':'light';$('#tgDark').setAttribute('aria-checked',dk?'true':'false')}
 $('#sws').onclick=e=>{const b=e.target.closest('.sw');if(!b)return;me.c=+b.dataset.c;paintMe();announce()};
 $('#mbtn').onclick=e=>{e.stopPropagation();$('#menu').hidden=!$('#menu').hidden};addEventListener('click',e=>{if(!e.target.closest('#menu'))$('#menu').hidden=true});
 let ftype=null;$('#fdr').onclick=e=>{const b=e.target.closest('.fd');if(!b)return;ftype=ftype===b.dataset.k?null:b.dataset.k;$$('.fd').forEach(x=>x.classList.toggle('a',x.dataset.k===ftype));draw(true)};$('#flt').onclick=e=>{const c=e.target.closest('.chip');if(!c)return;flt=c.dataset.f;$$('#flt .chip').forEach(x=>x.classList.toggle('a',x===c));draw(true)};
@@ -415,15 +384,8 @@ async function dlApp(){const blob=new Blob([SRC],{type:'text/html'});let d=null;
  else{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='loopie.html';a.click();toast('Loopie downloaded')}}
 function saveAll(){const L=xfers.filter(x=>x.dir==='in'&&x.done);if(!L.length)return toast('No received files yet');L.forEach((x,i)=>setTimeout(()=>{const a=document.createElement('a');a.href=x.url;a.download=x.name;a.click()},i*350));toast('Saving '+L.length+' files')}
 $('#inv').onclick=$('#mInv').onclick=invite;$('#mDl').onclick=$('#rowDl').onclick=dlApp;$('#mAll').onclick=saveAll;$('#mClr').onclick=()=>{xfers=[];draw(true);toast('Activity cleared')};
-/* onboarding: multi-slide tour */
-const OB=[['Share Smarter,','Every Single Day','Send photos, videos and documents straight to friends nearby. No cloud, no waiting, no data used.'],['Find Friends,','Right Around You','Friends nearby light up on a live radar. Tap a bubble and you are linked in a second.'],['Drop Files,','Watch Them Fly','Drag anything onto a friend or paste a screenshot. Live progress, and confetti when it lands.'],['Private By Design,','Zero Cloud Copies','Encrypted device to device. Chat on the same line, and nothing is stored on a server.']];
-let obI=0;
-function obSet(n){obI=n;$$('#vis .v').forEach((v,k)=>v.classList.toggle('a',k===n));$$('#obD i').forEach((d,k)=>d.classList.toggle('a',k===n));const t=$('#obT');t.classList.remove('in');void t.offsetWidth;t.innerHTML='<h2 class="serif"><span class="l">'+OB[n][0]+'</span>'+OB[n][1]+'</h2><p>'+OB[n][2]+'</p>';t.classList.add('in');$('#obGo').textContent=n===OB.length-1?'Explore Now':'Next'}
-function obDone(){const ob=$('#ob');ob.classList.add('out');try{localStorage.setItem('lp1','1')}catch(e){}setTimeout(()=>ob.classList.remove('s','out'),900)}
-function tour(){const ob=$('#ob');ob.classList.remove('out');ob.classList.add('s');$('#menu').hidden=true;obSet(0)}
-$('#obGo').onclick=()=>obI<OB.length-1?obSet(obI+1):obDone();$('#obSkip').onclick=obDone;$('#obTheme').onclick=()=>$('#tgDark').click();$('#mTour').onclick=tour;
-{let sx=0;const ob=$('#ob');ob.ontouchstart=e=>sx=e.touches[0].clientX;ob.ontouchend=e=>{const d=e.changedTouches[0].clientX-sx;if(d<-45&&obI<OB.length-1)obSet(obI+1);if(d>45&&obI>0)obSet(obI-1)}}
-(function(){let seen=true;try{seen=localStorage.getItem('lp1')==='1'}catch(e){}if(!seen)tour()})();
+/* onboarding */
+(function(){let seen=true;try{seen=localStorage.getItem('lp1')==='1'}catch(e){}const ob=$('#ob');if(seen)return;ob.classList.add('s');$('#obGo').onclick=$('#obSkip').onclick=()=>{ob.classList.add('out');try{localStorage.setItem('lp1','1')}catch(e){}setTimeout(()=>ob.remove(),900)}})();
 /* auto discovery */
 (async()=>{let r=null;try{r=window.claude&&await claude.use('room')}catch(e){}
  if(!r){offline=true;$('#hint').textContent=rtcOK?'Offline mode. Use Pair to link two devices on the same Wi-Fi.':'Offline mode and direct links are blocked here. Open Loopie in Chrome or Safari.';if(!rtcOK)warnRTC();renderDevs();return}
