@@ -156,6 +156,7 @@ a{color:inherit;text-decoration:none}img,svg{-webkit-user-drag:none}
 .brand{display:flex;align-items:center;gap:10px}
 .ob-logo{position:absolute;top:calc(18px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:4;width:46px;height:46px}
 .lgc>.lgm{margin:0 auto 10px}
+.ib{position:fixed;left:50%;bottom:calc(88px + env(safe-area-inset-bottom,0px));transform:translate(-50%,180%);width:min(92%,440px);z-index:19;display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:26px;background:var(--glass2);-webkit-backdrop-filter:blur(22px) saturate(1.3);backdrop-filter:blur(22px) saturate(1.3);border:1px solid var(--stroke);box-shadow:var(--sh);transition:transform .65s cubic-bezier(.34,1.3,.5,1)}.ib.s{transform:translate(-50%,0)}.ibt{flex:1;min-width:0}.ibt b{display:block;font-size:13.5px}.ibt small{font-size:11.5px;color:var(--mut);line-height:1.35;display:block}
 /* dark theme (toggle) */
 html:root[data-theme=dark]{--bgc:#050506;--ink:#f5f5f7;--mut:#8c8c93;--glass:rgba(255,255,255,.045);--glass2:rgba(255,255,255,.08);--stroke:rgba(255,255,255,.09);--line:rgba(255,255,255,.08);--btn:linear-gradient(180deg,#f7f7f8,#a5a5aa);--btnt:#111;--tick:rgba(255,255,255,.16);--sh:0 20px 44px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.1)}
 html:root[data-theme=dark] .bgfx i{opacity:0}html:root[data-theme=dark] .bgfx:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% -5%,rgba(255,255,255,.09),transparent 55%)}
@@ -339,6 +340,7 @@ html:root[data-theme=dark] .lg{background:#050506}
  </div>
  <div class="in2w"><div class="obt" id="obT"></div><div class="dots" id="obD"><i></i><i></i><i></i><i></i></div><button class="btn" id="obGo">Next</button></div>
 </div>
+<div class="ib" id="ib"><svg class="lgm" width="42" height="42" viewBox="0 0 120 120" aria-hidden="true"><use href="#logo"/></svg><div class="ibt"><b>Install Loopie</b><small id="ibS">Opens like a real app. Works offline.</small></div><button class="btn or" id="ibGo" style="padding:10px 16px;border-radius:18px;font-size:13px">Install</button><button class="rb sm" id="ibX" aria-label="Dismiss"><svg class="i"><use href="#i-x"/></svg></button></div>
 <div class="pp" id="pp"><div class="gl ppb"><div class="ch"><h2 class="serif">People nearby</h2><button class="rb sm" id="ppX" aria-label="Close"><svg class="i"><use href="#i-x"/></svg></button></div><input class="in" id="ppQ" type="search" placeholder="Search people" aria-label="Search people"><div class="ppl" id="ppL"></div></div></div>
 <div class="pv" id="pv"><div class="pvb"><div class="pvh"><div class="pvt"><b id="pvN"></b><small id="pvS"></small></div><a class="rb sm" id="pvDl" title="Save" aria-label="Save"><svg class="i"><use href="#i-save"/></svg></a><button class="rb sm" id="pvX" aria-label="Close"><svg class="i"><use href="#i-x"/></svg></button></div><div class="pvc" id="pvC"></div></div></div>
 <div class="lg" id="lg"><div class="bgfx"><i class="b1"></i><i class="b2"></i><i class="b3"></i><i class="b4"></i></div>
@@ -675,11 +677,22 @@ if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)){addEventLi
 let dip=null;
 const isApp=matchMedia('(display-mode: standalone)').matches||navigator.standalone;
 if(isApp)$$('.inst').forEach(b=>b.style.display='none');
-addEventListener('beforeinstallprompt',e=>{e.preventDefault();dip=e});
-addEventListener('appinstalled',()=>{dip=null;$$('.inst').forEach(b=>b.style.display='none');toast('Loopie installed')});
-async function installApp(){if(dip){dip.prompt();try{await dip.userChoice}catch(e){}dip=null;return}
- if(/iphone|ipad|ipod/i.test(navigator.userAgent))return toast('On iPhone: tap Share, then Add to Home Screen');
- toast('Open the Loopie link in Chrome, then choose Install app from the browser menu')}
+const IOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+function showIb(){if(isApp||$('#ib').classList.contains('s'))return;let t=0;try{t=+localStorage.getItem('lpib')||0}catch(e){}if(Date.now()-t<3*864e5)return;
+ if($('#ob').classList.contains('s')||$('#lg').classList.contains('s')){setTimeout(showIb,3000);return}
+ $('#ibS').textContent=IOS?'Tap Share, then Add to Home Screen':'Opens like a real app. Works offline.';$('#ibGo').textContent=IOS?'How':'Install';$('#ib').classList.add('s')}
+function hideIb(rem){$('#ib').classList.remove('s');if(rem){try{localStorage.setItem('lpib',String(Date.now()))}catch(e){}}}
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();dip=e;setTimeout(showIb,3500)});
+if(IOS&&!isApp)setTimeout(showIb,6000);
+addEventListener('appinstalled',()=>{dip=null;hideIb();$$('.inst').forEach(b=>b.style.display='none');toast('Loopie installed')});
+$('#ibGo').onclick=()=>{hideIb();installApp()};$('#ibX').onclick=()=>hideIb(true);
+async function installApp(){if(dip){dip.prompt();try{const r=await dip.userChoice;if(r&&r.outcome==='dismissed')hideIb(true)}catch(e){}dip=null;return}
+ if(IOS)return toast('On iPhone: tap Share, then Add to Home Screen');
+ if(window.top!==window.self)return toast('Install works from your real link, not inside a preview. Open the deployed link in Chrome');
+ if(location.protocol!=='https:'&&location.hostname!=='localhost')return toast('Install needs an https link. Deploy it on Render first');
+ try{const r=await fetch('manifest.webmanifest',{cache:'no-store'});if(!r.ok)throw 0}catch(e){return toast('manifest.webmanifest is missing on your server. Upload all the PWA files')}
+ try{if(!navigator.serviceWorker||!(await navigator.serviceWorker.getRegistration()))return toast('App files are still loading. Reload once and try again')}catch(e){}
+ toast('Use the browser menu (three dots), then Install app. If you do not see it, Loopie may already be installed')}
 $('#mInstall').onclick=$('#rowInst').onclick=()=>{$('#menu').hidden=true;installApp()};
 /* onboarding: multi-slide tour */
 const OB=[['Share Smarter,','Every Single Day','Send photos, videos and documents straight to friends nearby. No cloud, no waiting, no data used.'],['Find Friends,','Right Around You','Friends nearby light up on a live radar. Tap a bubble and you are linked in a second.'],['Drop Files,','Watch Them Fly','Drag anything onto a friend or paste a screenshot. Live progress, and confetti when it lands.'],['Private By Design,','Zero Cloud Copies','Encrypted device to device. Chat on the same line, and nothing is stored on a server.']];
